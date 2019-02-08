@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800');
+
+// global variables
+$body-bg: #D8E0D7;
+$pricing-bg: #fff;
+$primary-color: darken(#1abc9c, 5%);
+$primary-gradient: #1abc9c;
+$text-transparency: .7;
+$pricing-box-shadow: 0px 1px 1px rgba(100,110,110, .1), 0px -1px 1px rgba(100,110,110, .1);
+
+// pricing title variables
+$title-font-size: 1.4rem;
+$title-spacer-top: .4rem;
+$title-spacer-bottom: 1rem;
+
+// pricing amount variables
+$amount-font-weight: bold;
+$currency-font-size: 2rem;
+$currency-top-spacer: -30px;
+$num-font-size: 4rem;
+$float-font-size: 1.2rem;
+
+// pricing feature variables
+$feature-spacer-y: 1.3rem;
+$feature-spacer-x: -20px;
+$feature-item-spacer-y: .8rem;
+$feature-item-border-color: #efefef;
+$feature-item-border-style: dashed;
+$feature-item-font-size: .9rem;
+
+// pricing button variables
+$pricing-btn-font-size: 1rem;
+$pricing-btn-border: 2px solid $primary-color;;
+$pricing-btn-border-radius: 100px; 
+$pricing-btn-spacer-top: 2rem;
+$pricing-btn-height: 2.5rem;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+body {
+	font-family: sans-serif;
+	background: $body-bg;
+}
+
+.container {
+	max-width: 1300px;
+	padding: 50px 30px;
+	margin: auto;
+}
+
+/* using css flex box for responsive in different viewports */
+.pricing__wrapper {
+	display: flex;
+
+	.pricing__item {
+		flex-grow: 1;
+		flex-basis: 0;
+		flex-direction: column;
+		display: flex;
+		justify-content: space-between;
+		background: #fff;
+	}
+
+	@media screen and (max-width: 1000px) {
+		flex-wrap: wrap;
+		margin: 0;
+
+		.pricing__item {
+			min-width: calc(50% - 20px);
+			margin: 10px;
+		}
+	}
+
+	@media screen and (max-width: 570px) {
+		flex-wrap: wrap;
+
+		.pricing__item {
+			min-width: calc(100% - 20px);
+			margin: 10px;
+		}
+	}
+}
+
+/* pricing table style */
+.pricing__item {
+	position: relative;
+	text-align: center;
+	padding: 30px;
+	overflow: hidden;
+	font-family: 'Open Sans', sans-serif;
+	max-width: 400px;
+	box-shadow: $pricing-box-shadow;
+
+	.pricing__title {
+		font-size: $title-font-size;
+		opacity: $text-transparency;
+		margin-top: $title-spacer-top;
+		margin-bottom: $title-spacer-bottom;
+	}
+
+	.pricing__amount {
+		font-weight: $amount-font-weight;
+		color: $primary-color;
+
+		.pricing__currency {
+			position: relative;
+			font-size: $currency-font-size;
+			top: $currency-top-spacer;
+		}
+
+		.pricing__num {
+			font-size: $num-font-size;
+			font-weight: bold;
+		}
+
+		.pricing__float {
+			padding-left: 4px;
+			font-size: $float-font-size;
+			margin-left: -4px;
+
+			&:before {
+				content: '.';
+				padding-right: 2px;
+			}
+		}
+	}
+
+	.pricing__frequency {
+		color: $primary-color;
+	}
+
+	.pricing__feature {
+		list-style-type: none;
+		padding: 0;
+		text-align: left;
+		margin: $feature-spacer-y $feature-spacer-x;
+		opacity: $text-transparency;
+
+		.pricing__feature-item {
+			padding: $feature-item-spacer-y 20px;
+			border-bottom: 1px $feature-item-border-style $feature-item-border-color;
+			font-size: $feature-item-font-size;
+
+			span {
+				float: right;
+			}
+		}
+	}
+
+	.pricing__btn {
+		display: block; 
+		width: 100%;
+		border: $pricing-btn-border;
+		font-size: $pricing-btn-font-size;
+		color: $primary-color;
+		margin-top: $pricing-btn-spacer-top;
+		border-radius: $pricing-btn-border-radius;
+		outline: none;
+		min-height: $pricing-btn-height;
+		font-wieght: bold;
+		-webkit-transition: .3s;
+		transition: .3s;
+
+		&:hover {
+			background: $primary-color;
+			color: #fff;
+		}
+
+		&:active {
+			background: darken($primary-color, 7%);
+		}
+
+	}
+	
+	// recomended price table
+	&.recommended {
+		background: $primary-gradient;
+		color: #fff;
+		transform: scaleY(1.03);
+		box-shadow: 0 6px 20px rgba(50,50,50, .2);
+
+		&:before {
+			content: 'recommended';
+			height: 40px;
+			line-height: 40px;
+			padding: 0;
+			width: 200px;
+			position: absolute;
+			top: 30px;
+			left: -55px;
+			background: #fff;
+			color: $primary-color;
+			transform: rotate(-45deg);
+			font-size: .8rem;
+			font-weight: bold;
+		}
+
+		.pricing__amount,
+		.pricing__frequency,
+		.pricing__feature,
+		.pricing__title {
+			color: #fff;
+			opacity: 1;
+		}
+
+		.pricing__feature-item {
+			border-color: rgba(#fff, .2);
+		}
+
+		.pricing__btn {
+			background: transparent;
+			border-color: #fff;
+			color: #fff;
+
+			&:hover {
+				background: #fff;
+				color: $primary-color;
+			}
+
+			&:active {
+				background: darken(#fff, 3%);
+				border-color: darken(#fff, 3%);
+				color: $primary-color;
+			}
+		}
+	}
+}

@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: sans-serif;
+  background: #d8e0d7; }
+
+.container {
+  max-width: 1300px;
+  padding: 50px 30px;
+  margin: auto; }
+
+/* using css flex box for responsive in different viewports */
+.pricing__wrapper {
+  display: flex; }
+  .pricing__wrapper .pricing__item {
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    background: #fff; }
+  @media screen and (max-width: 1000px) {
+    .pricing__wrapper {
+      flex-wrap: wrap;
+      margin: 0; }
+      .pricing__wrapper .pricing__item {
+        min-width: calc(50% - 20px);
+        margin: 10px; } }
+  @media screen and (max-width: 570px) {
+    .pricing__wrapper {
+      flex-wrap: wrap; }
+      .pricing__wrapper .pricing__item {
+        min-width: calc(100% - 20px);
+        margin: 10px; } }
+
+/* pricing table style */
+.pricing__item {
+  position: relative;
+  text-align: center;
+  padding: 30px;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+  max-width: 400px;
+  box-shadow: 0px 1px 1px rgba(100, 110, 110, 0.1), 0px -1px 1px rgba(100, 110, 110, 0.1); }
+  .pricing__item .pricing__title {
+    font-size: 1.4rem;
+    opacity: 0.7;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem; }
+  .pricing__item .pricing__amount {
+    font-weight: bold;
+    color: #102542; }
+    .pricing__item .pricing__amount .pricing__currency {
+      position: relative;
+      font-size: 2rem;
+      top: -30px; }
+    .pricing__item .pricing__amount .pricing__num {
+      font-size: 4rem;
+      font-weight: bold; }
+    .pricing__item .pricing__amount .pricing__float {
+      padding-left: 4px;
+      font-size: 1.2rem;
+      margin-left: -4px; }
+      .pricing__item .pricing__amount .pricing__float:before {
+        content: '.';
+        padding-right: 2px; }
+  .pricing__item .pricing__frequency {
+    color: #102542; }
+  .pricing__item .pricing__feature {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    margin: 1.3rem -20px;
+    opacity: 0.7; }
+    .pricing__item .pricing__feature .pricing__feature-item {
+      padding: 0.8rem 20px;
+      border-bottom: 1px dashed #efefef;
+      font-size: 0.9rem; }
+      .pricing__item .pricing__feature .pricing__feature-item span {
+        float: right; }
+  .pricing__item .pricing__btn {
+    display: block;
+    width: 100%;
+    border: 2px solid #102542;
+    font-size: 1rem;
+    color: #102542;
+    margin-top: 2rem;
+    border-radius: 100px;
+    outline: none;
+    min-height: 2.5rem;
+    font-weight: bold;
+    -webkit-transition: .3s;
+    transition: .3s; }
+    .pricing__item .pricing__btn:hover {
+      background: #102542;
+      color: #fff; }
+    .pricing__item .pricing__btn:active {
+      background: #0b1e38; }
+  .pricing__item.recommended {
+    background: #0b1e38;
+    color: #fff;
+    transform: scaleY(1.03);
+    box-shadow: 0 6px 20px rgba(50, 50, 50, 0.2); }
+    .pricing__item.recommended:before {
+      content: 'recommended';
+      height: 40px;
+      line-height: 40px;
+      padding: 0;
+      width: 200px;
+      position: absolute;
+      top: 30px;
+      left: -55px;
+      background: #fff;
+      color: #102542;
+      transform: rotate(-45deg);
+      font-size: .8rem;
+      font-weight: bold; }
+    .pricing__item.recommended .pricing__amount,
+    .pricing__item.recommended .pricing__frequency,
+    .pricing__item.recommended .pricing__feature,
+    .pricing__item.recommended .pricing__title {
+      color: #fff;
+      opacity: 1; }
+    .pricing__item.recommended .pricing__feature-item {
+      border-color: rgba(255, 255, 255, 0.2); }
+    .pricing__item.recommended .pricing__btn {
+      background: transparent;
+      border-color: #fff;
+      color: #fff; }
+      .pricing__item.recommended .pricing__btn:hover {
+        background: #fff;
+        color: #102542; }
+      .pricing__item.recommended .pricing__btn:active {
+        background: #f7f7f7;
+        border-color: #f7f7f7;
+        color: #102542; }
